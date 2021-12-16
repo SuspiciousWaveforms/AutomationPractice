@@ -9,16 +9,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
+import java.util.Random;
 
 public class CreateAccountStepDefinitions {
     WebDriver webDriver;
     PageRepository pageRepository;
 
     // Separate file?
-    String email = "testitnow@fmail.com";
+    Random random = new Random();
+    String email = "testitnowsdflkjsal@fmail.com";
     String firstname = "Jackson";
     String lastname = "James";
     String password = "hunter2";
+    String address = "32 Canon Close";
+    String city = "London";
+    String state = "Arkansas";
+    String postcode = "00000";
+    String mobileNumber = "091242239232";
 
     public CreateAccountStepDefinitions(WebDriverHooks hooks) {
         this.webDriver = hooks.getWebDriver();
@@ -40,10 +47,17 @@ public class CreateAccountStepDefinitions {
         pageRepository.createAccountPage.inputCustomerFirstname(firstname);
         pageRepository.createAccountPage.inputCustomerLastname(lastname);
         pageRepository.createAccountPage.inputPassword(password);
+        pageRepository.createAccountPage.inputAddressFirstname(firstname);
+        pageRepository.createAccountPage.inputAddressLastname(lastname);
+        pageRepository.createAccountPage.inputAddress(address);
+        pageRepository.createAccountPage.inputAddressCity(city);
+        pageRepository.createAccountPage.inputState(state);
+        pageRepository.createAccountPage.inputPostcode(postcode);
+        pageRepository.createAccountPage.inputMobile(mobileNumber);
+        pageRepository.myAccountPage = pageRepository.createAccountPage.clickRegister();
     }
     @Then("the user should be on the 'My account' page")
     public void the_user_should_be_on_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assert(pageRepository.myAccountPage.checkOnMyAccountPage());
     }
 }
