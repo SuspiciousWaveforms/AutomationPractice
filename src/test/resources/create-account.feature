@@ -7,9 +7,3 @@
     Given the user is on the 'Sign in' page
     When the user creates an account
     Then the user should be on the 'My account' page
-
-
-
-
-#  test@testersonsfdsfs.com
-#  password
